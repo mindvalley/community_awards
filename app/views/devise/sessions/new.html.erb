@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="box login">
+        <div class="box-title">
+          <span class="ico"><i class="icon-lock"></i></span> Login
+        </div>
+        <div class="box-content">
+          <%= link_to 'google apps', user_omniauth_authorize_path(:google_apps, app_domain: 'mindvalley.com') %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
