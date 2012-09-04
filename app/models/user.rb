@@ -15,7 +15,7 @@ class User
   def self.find_for_googleapps_oauth(access_token, signed_in_resource=nil)
     data = access_token['info']
 
-    if employee = Employee.where(email_address: data.email).first && (employee && employee.eligible_to_vote?)
+    if employee = Employee.where(email_address: data.email).first# && (employee && employee.eligible_to_vote?)
       if user = User.where(:email_address => data['email']).first
         # update user with information from access_token so we're current
         user.provider = access_token.provider
