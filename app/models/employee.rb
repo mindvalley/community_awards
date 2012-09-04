@@ -14,4 +14,8 @@ class Employee
   field :status
 
   belongs_to :user
+
+  def eligible_to_vote?
+    status == 'confirmed' && ((Date.today - 6.months) > date_joined)
+  end
 end
