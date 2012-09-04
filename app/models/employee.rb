@@ -10,7 +10,7 @@ class Employee
 
   field :date_joined, type: Date
   field :votable, type: Boolean, default: true
-  field :team, default: lambda { |doc| doc.nil? ? '' : doc.downcase }
+  field :team, type: String, default: ->{ team.nil? ? '' : team.downcase }
   field :status
 
   belongs_to :user

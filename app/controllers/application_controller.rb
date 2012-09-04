@@ -16,4 +16,9 @@ class ApplicationController < ActionController::Base
     date = Date.today << 1
     "#{date.strftime("%Y-%m")}"
   end
+
+  rescue_from AccessDenied do |exception|
+    redirect_to root_url, :alert => "Sorry, you are not authorized to login"
+  end
+
 end

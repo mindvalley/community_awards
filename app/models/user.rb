@@ -8,7 +8,6 @@ class User
   field :first_name
   field :last_name
 
-  has_many :votes
   has_one :info, class_name: 'Employee'
 
   #has_many :candidates
@@ -16,7 +15,7 @@ class User
   def self.find_for_googleapps_oauth(access_token, signed_in_resource=nil)
     data = access_token['info']
 
-    if employee = Employee.where(email_address: data.email).first # whitelist
+    if employee = Employee.where(email_address: data.email, status: 'confirmed').first # whitelist
 
       if user = User.where(:email_address => data['email']).first
         # update user with information from access_token so we're current
@@ -40,7 +39,7 @@ class User
       user
 
     else
-      raise 'Unauthorized Login'
+      raise AccessDenied
     end
   end
 
