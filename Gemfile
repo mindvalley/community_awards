@@ -29,9 +29,12 @@ gem 'jquery-rails'
 
 # Use rainbows as the app server
 gem 'rainbows'
+gem 'eventmachine'
 
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'capistrano-ext'
+gem 'rvm-capistrano'
 
 # To use debugger
 # gem 'debugger'
