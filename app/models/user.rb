@@ -9,6 +9,7 @@ class User
   field :last_name
 
   has_one :info, class_name: 'Employee'
+  has_many :ballots
 
   #has_many :candidates
 
