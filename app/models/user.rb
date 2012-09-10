@@ -9,7 +9,7 @@ class User
   field :last_name
 
   has_one :info, class_name: 'Employee'
-  has_many :ballots
+  has_many :ballots, class_name: 'Ballot', inverse_of: :voter
 
   #has_many :candidates
 
