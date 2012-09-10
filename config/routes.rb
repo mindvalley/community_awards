@@ -1,4 +1,6 @@
 CommunityAwards::Application.routes.draw do
+  get "downloads/voters"
+
   resources :ballots
 
   resources :employees
@@ -6,6 +8,8 @@ CommunityAwards::Application.routes.draw do
   root to: 'home#index'
 
   post 'uploads/employees'
+  post 'uploads/salaries'
+  post 'downloads/voters'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_scope :user do

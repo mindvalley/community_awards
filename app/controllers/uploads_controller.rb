@@ -1,4 +1,3 @@
-require 'csv'
 class UploadsController < ApplicationController
   def employees
     if request.post? && params[:csv].present?
@@ -24,6 +23,7 @@ class UploadsController < ApplicationController
         else
           employee = Employee.create! line
         end
+        employee.date_joined = Date.parse(employee.start_date_dd_mm_yy)
 
         if employee.status == nil || (employee.team && employee.team.downcase == 'executive')
           employee.votable = false
@@ -33,5 +33,9 @@ class UploadsController < ApplicationController
       end
     end
     redirect_to root_url, notice: 'CSV uploaded successfully'
+  end
+
+  def salaries
+    raise params.inspect
   end
 end

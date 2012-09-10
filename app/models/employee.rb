@@ -9,13 +9,16 @@ class Employee
   validates :email_address, uniqueness: true
 
   field :date_joined, type: Date
+  field :start_date_dd_mm_yy, type: String
   field :votable, type: Boolean, default: true
   field :team, type: String, default: ->{ team.nil? ? '' : team.downcase }
   field :status
 
   belongs_to :user
 
-  def eligible_to_vote?
-    status == 'confirmed' && ((Date.today - 6.months) > date_joined)
+  def update_date_joined
+    self.date_joined = Date.parse(self.start_date_dd_mm_yy)
+    self.save!
   end
+
 end
