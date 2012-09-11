@@ -1,6 +1,8 @@
 CommunityAwards::Application.routes.draw do
   get "downloads/voters"
 
+  resources :results, only: [:index, :show]
+
   resources :ballots
 
   resources :employees

@@ -70,8 +70,8 @@ class UploadsController < ApplicationController
     if result = Result.where(period: params[:period]).first
       result.update_attributes! period: params[:period], lines: @results
     else
-      Result.create! period: params[:period], lines: @results
+      result = Result.create! period: params[:period], lines: @results
     end
-    @results
+    redirect_to result
   end
 end
