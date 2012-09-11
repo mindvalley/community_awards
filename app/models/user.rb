@@ -7,6 +7,9 @@ class User
   field :uid
   field :first_name
   field :last_name
+  field :email_address
+
+  default_scope order_by(email_address: :asc)
 
   has_one :info, class_name: 'Employee'
   has_many :ballots, class_name: 'Ballot', inverse_of: :voter
@@ -16,7 +19,7 @@ class User
     Ballot.where(period: period).each do |ballot|
       voters << ballot.voter
     end
-    voters
+    voters.sort { |a,b| a.email_address <=> b.email_address}
   end
 
   def self.all_who_abstained(period)
@@ -55,6 +58,15 @@ class User
 
     else
       raise AccessDenied
+    end
+  end
+
+  def self.to_csv(voters, options={})
+    CSV.generate(options) do |csv|
+      csv << [:email_address, :salary]
+      voters.each do |voter|
+        csv << [voter.email_address, '']
+      end
     end
   end
 

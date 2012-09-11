@@ -5,4 +5,6 @@ class Ballot
 
   belongs_to :voter, class_name: 'User'
   field :period
+  
+  default_scope order_by('voter.email_address' => :asc)
 end
