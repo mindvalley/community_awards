@@ -19,6 +19,6 @@ class Ballot
         result[Employee.find(vote.candidate).email_address] += vote.points.to_f * af
       end
     end
-    result.sort_by {|k,v| v}
+    (result.sort_by {|k,v| v}).reverse
   end
 end
