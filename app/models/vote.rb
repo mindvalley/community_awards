@@ -3,6 +3,6 @@ class Vote
   embedded_in :ballot
 
   field :candidate, type: String
-  field :points
+  field :points, type: Float
 
 end
