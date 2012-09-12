@@ -68,3 +68,29 @@
     <% end %>
   </div>
 </div>
+
+<div class="box">
+  <div class="box-title">
+    Employee List
+  </div>
+  <div class="box-content nopadding">
+    <table class="table table-bordered table-striped" id="results">
+      <thead>
+        <th>Nick Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Team</th>
+      </thead>
+      <tbody>
+        <% @employees.each do |result| %>
+          <tr>
+            <td><%= employee.nick_name %></td>
+            <td><%= employee.email %></td>
+            <td><%= employee.status %></td>
+            <td><%= employee.team %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
