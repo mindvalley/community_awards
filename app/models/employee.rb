@@ -3,9 +3,9 @@ class Employee
 
   scope :votable, where(votable: true)
 
-  default_scope order_by(email_address: :asc)
+  default_scope order_by(status: :asc, email_address: :asc)
 
-  field :email, type: String
+  field :email_address, type: String
   validates :email_address, uniqueness: true
 
   field :date_joined, type: Date

@@ -73,7 +73,7 @@
   <div class="box-title">
     Employee List
   </div>
-  <div class="box-content nopadding">
+  <div class="box-content">
     <table class="table table-bordered table-striped" id="results">
       <thead>
         <th>Nick Name</th>
@@ -85,7 +85,7 @@
         <% @employees.each do |employee| %>
           <tr>
             <td><%= employee.nick_name %></td>
-            <td><%= employee.email %></td>
+            <td><%= employee.email_address %></td>
             <td><%= employee.status %></td>
             <td><%= employee.team %></td>
           </tr>
