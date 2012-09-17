@@ -23,7 +23,11 @@ class UploadsController < ApplicationController
         else
           employee = Employee.create! line
         end
-        employee.date_joined = Date.parse(employee.start_date_dd_mm_yy)
+        begin
+          employee.date_joined = Date.parse(employee.start_date_dd_mm_yy)
+        rescue Exception => e
+          logger.error "#{e.message} #{e.backtrace}"
+        end
 
         if employee.status == nil || (employee.team && employee.team.downcase == 'executive')
           employee.votable = false
@@ -57,7 +61,7 @@ class UploadsController < ApplicationController
         salary_table[line[:email_address]] = line[:salary]
         total_salaries += line[:salary].to_f
       end
-      
+
       salary_table.each do |email_address, salary|
         if user = User.where(email_address: email_address).first
           ballot = user.ballots.where(period: params[:period]).first
