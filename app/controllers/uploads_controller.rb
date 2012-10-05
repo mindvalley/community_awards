@@ -29,7 +29,7 @@ class UploadsController < ApplicationController
           logger.error "#{e.message} #{e.backtrace}"
         end
 
-        if employee.status == nil || (employee.team && employee.team.downcase == 'executive')
+        if employee.status == 'non-employee' || (employee.team && employee.team.downcase == 'executive')
           employee.votable = false
           employee.save!
         end
