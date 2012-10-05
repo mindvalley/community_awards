@@ -42,6 +42,7 @@ every day</strong> and those that are <strong>helping us deliver results.</stron
         <% @ballot.votes.shuffle.each_with_index do |vote, index| %>
           <% employee = Employee.find(vote.candidate) %>
           <% next unless employee %>
+          <% next if employee.email_address.nil? %>
           <% next if employee.email_address == current_user.email_address %>
           <% slider_id = "#{employee.email_address.parameterize}-slider" %>
           <% text_id = "#{employee.email_address.parameterize}-text" %>
