@@ -16,7 +16,12 @@ class Ballot
       af = ballot.adjustment_factor
       ballot.votes.each do |vote|
         next if vote.nil?
-        result[Employee.find(vote.candidate).email_address] += vote.points.to_f * af
+        begin
+          candidate = Employee.find(vote.candidate)
+          result[candidate.email_address] += vote.points.to_f * af
+        rescue Exception => e
+          logger.error "#{e.message} #{e.backtrace}"
+        end
       end
     end
     (result.sort_by {|k,v| v}).reverse
