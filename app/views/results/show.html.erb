@@ -12,7 +12,7 @@
       </thead>
       <tbody>
         <% @results.lines.each do |result| %>
-          <% employee = Employee.where(email_address: result[0]).first %>
+          <% employee = Employee.where(email_address: result[0]).first || OpenStruct.new %>
           <tr>
             <td><%= employee.nick_name %></td>
             <td><%= result[0] %></td>
