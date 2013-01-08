@@ -18,8 +18,14 @@ class UploadsController < ApplicationController
         puts line.inspect
 
         logger.info "importing: #{line.inspect}"
-        Employee.where(email_address: line[:email]).first.delete
-        Employee.where(email: line[:email]).first.delete
+        if employee = Employee.where(email_address: line[:email]).first
+          employee.delete
+        end
+
+        if employee = Employee.where(email: line[:email]).first
+          employee.delete
+        end
+        
         line[:email_address] = line[:email]
         employee = Employee.create! line
         Rails.logger.info employee.inspect
