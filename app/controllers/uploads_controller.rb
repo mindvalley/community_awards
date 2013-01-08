@@ -18,12 +18,13 @@ class UploadsController < ApplicationController
         puts line.inspect
 
         logger.info "importing: #{line.inspect}"
-        if employee = Employee.where(email_address: line[:email_address]).first
+        if employee = Employee.where(email_address: line[:email]).first
           employee.update_attributes! line
           employee.save!
         else
           employee = Employee.create! line
         end
+        Rails.logger.info employee.inspect
         begin
           employee.date_joined = Date.parse(employee.start_date_dd_mm_yy) if employee.start_date_dd_mm_yy
         rescue Exception => e
