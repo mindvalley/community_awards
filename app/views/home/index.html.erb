@@ -26,7 +26,7 @@ every day</strong> and those that are <strong>helping us deliver results.</stron
         <button id="submit" type="submit" class="btn btn-primary">Submit Ballot</button>
       </p>
       <p>
-        <%= Ballot.all.count %> people have voted already
+        <%= Ballot.where(period: current_period).count %> people have voted already
       </p>
       <p>
         Voting Month: <%= (Date.today).strftime("%B") %>

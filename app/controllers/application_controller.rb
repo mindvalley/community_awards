@@ -13,9 +13,12 @@ class ApplicationController < ActionController::Base
   end
 
   def current_period
-    date = Date.today << 1
-    "#{date.strftime("%Y-%m")}"
+    # date = Date.today << 1
+    # "#{date.strftime("%Y-%m")}"
+    "2013-03"
   end
+
+  helper_method :current_period
 
   def current_day
     Date.today.day
