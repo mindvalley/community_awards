@@ -1,6 +1,7 @@
 class UploadsController < ApplicationController
   def employees
     if request.post? && params[:csv].present?
+      Employee.destroy_all
       infile = params[:csv].read.gsub(",=", ',')
       n, errs, headers = 0, [], []
       CSV.parse(infile) do |row|
