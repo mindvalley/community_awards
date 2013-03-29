@@ -39,7 +39,7 @@ gem 'rvm-capistrano'
 # To use debugger
 # gem 'debugger'
 
-gem 'mongoid'
+gem 'mongoid', "3.0.9"
 gem 'bson_ext'
 
 gem 'devise'
@@ -47,6 +47,7 @@ gem 'omniauth-google-apps', git: 'git://github.com/parasquid/omniauth-google-app
 
 group :development do
   gem 'quiet_assets'
+  gem "pry"
 end
 
 gem 'bootstrap-sass'
