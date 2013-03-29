@@ -21,22 +21,28 @@ every day</strong> and those that are <strong>helping us deliver results.</stron
   <div id="pointsReminderWrapper">
     <div id="pointsReminder">
       <p>
-        You have <strong><span id="pointsRemaining">100</span> points</strong>. Distribute them however you want.
+        You have <strong><span id="pointsRemaining">100</span> points <%=  %></strong>. Distribute them however you want.
         <button id="reset" class="btn btn-danger">Reset Values</button>
         <button id="submit" type="submit" class="btn btn-primary">Submit Ballot</button>
+      </p>
+      <p>
+        <%= Ballot.all.count %> people have voted already
+      </p>
+      <p>
+        Voting Month: <%= (Date.today).strftime("%B") %>
       </p>
     </div>
   </div>
 
-  <div style="height: 17px;"></div>
+  <div style="height: 85px;"></div>
 
   <div class="box-content">
     <table class="table table-bordered table-striped" id="ballot">
       <thead>
-        <th>Nick Name</th>
-        <th>Full Name</th>
-        <th>Team</th>
-        <th colspan="2">Score</th>
+        <th class="header">Nick Name</th>
+        <th class="header">Full Name</th>
+        <th class="header">Team</th>
+        <th colspan="2" class="header">Score</th>
       </thead>
       <tbody>
         <% @ballot.votes.shuffle.each_with_index do |vote, index| %>
