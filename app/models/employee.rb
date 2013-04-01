@@ -14,6 +14,7 @@ class Employee
   field :team, type: String, default: ->{ team.nil? ? '' : team.downcase }
   field :status
   field :nick_name
+  field :full_legal_name
 
   belongs_to :user
 
