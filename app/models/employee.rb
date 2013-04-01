@@ -13,6 +13,7 @@ class Employee
   field :votable, type: Boolean, default: true
   field :team, type: String, default: ->{ team.nil? ? '' : team.downcase }
   field :status
+  field :nick_name
 
   belongs_to :user
 
