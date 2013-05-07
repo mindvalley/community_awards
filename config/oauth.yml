@@ -1,0 +1,9 @@
+production:
+  mindvalley:
+    consumer_key: your_production_key
+    consumer_secret: your_production_secret
+
+development:
+  mindvalley:
+    consumer_key: EaRvLedIUftMN3AyFam7RAFG2tbid3KV9P6IkQW9
+    consumer_secret: s9MvfUzU66rzFop8CuWTUEYBupjsZguvdxKf0edP

@@ -1,4 +1,25 @@
 AwardsV2::Application.routes.draw do
+  
+
+  
+
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
+  get "sessions/create"
+
+  get "sessions/destroy"
+
+  devise_for :users
+
+  
+
+  match '/auth/mindvalley/callback' => 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
+  # get "polls/index"
+  root :to => "polls#index"
+
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

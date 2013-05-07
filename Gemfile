@@ -22,6 +22,14 @@ end
 
 gem 'jquery-rails'
 
+gem 'omniauth-mindvalley', :git => 'git://github.com/mindvalley/omniauth-mindvalley.git'
+gem "rails_admin", :git => "git://github.com/sferik/rails_admin.git"
+gem "twitter-bootstrap-rails"
+group :development do 
+  gem "pry"
+  gem "quiet_assets"
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -36,3 +44,6 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+
+gem "devise"
