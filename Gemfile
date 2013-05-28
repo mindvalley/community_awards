@@ -37,10 +37,6 @@ group :development do
   gem 'reek'
 end
 
-# Use rainbows as the app server
-gem 'rainbows'
-gem 'eventmachine'
-
 gem 'activerecord-postgres-hstore'
 # gem 'whenever', :require => false
 gem 'delayed_job_active_record'
