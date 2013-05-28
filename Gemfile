@@ -37,6 +37,11 @@ group :development do
   gem 'reek'
 end
 
+group :production do
+ gem 'therubyracer'
+ gem 'execjs'
+end
+
 gem 'activerecord-postgres-hstore'
 # gem 'whenever', :require => false
 gem 'delayed_job_active_record'
