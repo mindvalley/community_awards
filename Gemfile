@@ -6,8 +6,8 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-
-
+gem "cancan"
+gem 'rails_config'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -19,17 +19,36 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
+gem "mailcatcher"
 gem 'jquery-rails'
 
 gem 'omniauth-mindvalley', :git => 'git://github.com/mindvalley/omniauth-mindvalley.git'
-gem "rails_admin", :git => "git://github.com/sferik/rails_admin.git"
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem "twitter-bootstrap-rails"
+
 group :development do 
   gem "pry"
   gem "quiet_assets"
+  gem 'meta_request'
+  gem "better_errors"
+  gem 'binding_of_caller'
+  gem 'rack-mini-profiler'
+  gem 'rails_best_practices'
+  gem 'reek'
 end
 
+# Use rainbows as the app server
+gem 'rainbows'
+gem 'eventmachine'
+
+gem 'activerecord-postgres-hstore'
+# gem 'whenever', :require => false
+gem 'delayed_job_active_record'
+gem 'daemons'
+gem 'ice_cube'
+gem 'rufus-scheduler'
+gem "delayed_job_web"
+gem "chronic"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -37,13 +56,12 @@ end
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
+gem 'capistrano-ext'
+gem 'rvm-capistrano'
 
 # To use debugger
 # gem 'debugger'
-
-
-gem "devise"

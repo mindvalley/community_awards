@@ -1,24 +1,24 @@
 AwardsV2::Application.routes.draw do
   
-
-  
-
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  # mount RailsAdminUploadEmployees::Engine => '/admin', :as => 'rails_admin'
 
   get "sessions/create"
 
   get "sessions/destroy"
 
-  devise_for :users
+  match '/auth/mindvalley/signout', to: 'sessions#destroy', as: 'signout'
 
-  
+  # match '/admin/employee', to: "rails_admin/main#upload_employees"
+  # post '/admin/employee/upload_employees', to: "rails_admin/main#upload_employees"
+
+  resources :ballots, controller: "polls"  
 
   match '/auth/mindvalley/callback' => 'sessions#create'
   match 'auth/failure', to: redirect('/')
-  match 'signout', to: 'sessions#destroy', as: 'signout'
   # get "polls/index"
   root :to => "polls#index"
-
+  match "/delayed_job" => DelayedJobWeb, :anchor => false
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

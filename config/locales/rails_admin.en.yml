@@ -1,0 +1,11 @@
+en:
+  admin:
+    actions:
+      upload_employees:
+        title: "Upload Employees"
+        menu: "Upload Employees"
+        breadcrumb: "Upload Employees"
+      upload_salaries:
+        title: "Upload Salaries"
+        menu: "Upload Salaries"
+        breadcrumb: "Upload Salaries"

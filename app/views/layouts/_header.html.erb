@@ -15,8 +15,9 @@
       <a class="userinfo dropown-toggle" data-toggle="dropdown" href="#userinfo">
         <span><strong><%= current_user.email %></strong></span>
       </a>
+      <%= link_to "Admin", "/admin" if current_user.admin? %>
         <ul class="dropdown-menu">
-          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to 'Logout', "/auth/mindvalley/signout" %></li>
         </ul>
     </div>
   </div>

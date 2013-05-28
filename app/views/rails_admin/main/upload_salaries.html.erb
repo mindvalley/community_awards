@@ -1,0 +1,26 @@
+<div class="box">
+  <div class="box-title">
+    Upload Salaries and Compute Results
+  </div>
+  <div class="box-content nopadding">
+    <%= form_tag({controller: "rails_admin/main", :action => 'upload_salaries', :model_name => "#{@abstract_model.to_param}"}, :multipart => true, :class => 'form-horizontal') do %>
+      <div class="control-group">
+        <label class="control-label">Salaries CSV</label>
+        <div class="controls">
+          <%= file_field_tag :csv %>
+          <span class="help-inline">.csv (comma separated values) format file with the headers: Email, Salary</span>
+        </div>
+        <label class="control-label">Period</label>
+        <div class="controls">
+          <%= text_field_tag :period, current_period, placeholder: current_period %>
+          <span class="help-inline">voting period in YYYY-MM format (e.g. 2012-08 for the period September 2012)</span>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            <i class='icon-circle-arrow-up icon-white'></i> Upload
+          </button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

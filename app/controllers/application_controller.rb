@@ -17,10 +17,32 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  helper_method :current_user, :user_signed_in?
+  def current_period
+    unless Ballot.first
+      prev_month = "#{Date.today.year}-#{Date.today.month - 1}"
+    else
+      prev_month = Ballot.first.period.split('-').last
+    end
+    if prev_month == Date.today.month.to_s and Date.today == Date.today.end_of_month.beginning_of_week.next
+      @current_period = get_current_period
+    else
+      if prev_month < Date.today.month.to_s
+        @current_period = get_current_period
+      else
+        @current_period = "#{Date.today.year}-#{prev_month}"
+      end
+    end
+  	# @current_period = "2013-4"
+  end
+
+  def current_month
+  	@current_period = Date.today.strftime("%B")
+  end
+
+  helper_method :current_user, :user_signed_in?, :current_period
 
   layout :layout_by_resource
-  
+
   def layout_by_resource
     if user_signed_in?
       "application"
@@ -45,5 +67,10 @@ class ApplicationController < ActionController::Base
   def set_current_user
     User.current_user = current_user
   end
-  
+
+  def get_current_period
+    "#{Date.today.year}-#{Date.today.month}"
+  end
+  #TODO: install whenver gem and add cron jobs to send out emails on last Tuesday, Friday of prev month and First Monday of next month with respctive templates
+  #integrate this with delayed_job if possible to run the process in background and not overwhelm the server 
 end

@@ -1,9 +1,72 @@
 # RailsAdmin config file. Generated on May 07, 2013 13:07
 # See github.com/sferik/rails_admin for more informations
-
+require Rails.root.join('lib', 'rails_admin_upload_employees.rb')
+require Rails.root.join('lib', 'rails_admin_upload_salaries.rb')
 RailsAdmin.config do |config|
 
+  module RailsAdmin
+    module Config
+      module Actions
+        class UploadEmployees < RailsAdmin::Config::Actions::Base
+          RailsAdmin::Config::Actions.register(self)
+        end
+      end
+    end
+  end
+  module RailsAdmin
+    module Config
+      module Actions
+        class UploadSalaries < RailsAdmin::Config::Actions::Base
+          RailsAdmin::Config::Actions.register(self)
+        end
+      end
+    end
+  end
 
+  config.authenticate_with{:authenticate_user!}
+  config.authorize_with :cancan, AdminAbility
+  config.actions do
+    # root actions
+    dashboard                     # mandatory
+    # collection actions
+    index                         # mandatory
+    new
+    export
+    history_index
+    bulk_delete
+    # member actions
+    show
+    edit
+    delete
+    history_show
+    show_in_app
+   
+    # Set the custom action here
+    upload_employees do
+      # Make it visible only for article model. You can remove this if you don't need.
+      visible do
+        bindings[:abstract_model].model.to_s == "Employee"
+      end
+    end
+    upload_salaries do
+      # Make it visible only for article model. You can remove this if you don't need.
+      visible do
+        bindings[:abstract_model].model.to_s == "Employee"
+      end
+    end
+  end
+
+  config.model Result do
+    show do
+      field :period
+      field :lines do
+        label "Final Results"
+        pretty_value do
+          bindings[:view].render partial: "result"
+        end
+      end
+    end
+  end
   ################  Global configuration  ################
 
   # Set the admin name here (optional second array element will appear in red). For example:
@@ -85,7 +148,7 @@ RailsAdmin.config do |config|
       configure :uid, :string 
       configure :info, :string 
       configure :credentials, :string 
-      configure :extra, :string 
+      configure :extra, :string
 
   #   # Cross-section configuration:
 

@@ -11,7 +11,45 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130507043541) do
+ActiveRecord::Schema.define(:version => 20130522081602) do
+
+  create_table "ballots", :force => true do |t|
+    t.integer  "employee_id"
+    t.float    "adjustment_factor", :default => 1.0
+    t.string   "period"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.text     "schedule"
+  end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "employees", :force => true do |t|
+    t.string   "email"
+    t.date     "date_joined"
+    t.date     "start_date"
+    t.boolean  "voteable",        :default => true
+    t.string   "team"
+    t.string   "status"
+    t.string   "nick_name"
+    t.string   "full_legal_name"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
@@ -26,13 +64,22 @@ ActiveRecord::Schema.define(:version => 20130507043541) do
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
+  create_table "results", :force => true do |t|
+    t.string   "period"
+    t.hstore   "lines"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "results", ["lines"], :name => "index_results_on_lines"
+
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+    t.string   "encrypted_password",     :default => "",         :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -47,9 +94,19 @@ ActiveRecord::Schema.define(:version => 20130507043541) do
     t.string   "info"
     t.string   "credentials"
     t.string   "extra"
+    t.string   "role",                   :default => "employee"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "votes", :force => true do |t|
+    t.string   "candidate"
+    t.float    "points"
+    t.integer  "ballot_id"
+    t.integer  "employee_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
 end
