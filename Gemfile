@@ -58,6 +58,6 @@ gem 'unicorn'
 gem 'capistrano'
 gem 'capistrano-ext'
 gem 'rvm-capistrano'
-
+gem 'hipchat'
 # To use debugger
 # gem 'debugger'

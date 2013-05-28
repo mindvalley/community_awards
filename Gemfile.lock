@@ -228,10 +228,6 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rainbows (4.4.1)
-      kgio (~> 2.5)
-      rack (~> 1.1)
-      unicorn (~> 4.1)
     raindrops (0.10.0)
     rake (10.0.4)
     rdoc (3.12.2)
@@ -309,7 +305,6 @@ DEPENDENCIES
   daemons
   delayed_job_active_record
   delayed_job_web
-  eventmachine
   ice_cube
   jquery-rails
   mailcatcher
@@ -323,7 +318,6 @@ DEPENDENCIES
   rails_admin!
   rails_best_practices
   rails_config
-  rainbows
   reek
   rufus-scheduler
   rvm-capistrano
