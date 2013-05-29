@@ -18,7 +18,7 @@ AwardsV2::Application.routes.draw do
   match 'auth/failure', to: redirect('/')
   # get "polls/index"
   root :to => "polls#index"
-  match "/delayed_job" => DelayedJobWeb, :anchor => false
+  # match "/delayed_job" => DelayedJobWeb, :anchor => false
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
