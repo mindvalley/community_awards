@@ -44,12 +44,6 @@ end
 
 gem 'activerecord-postgres-hstore'
 # gem 'whenever', :require => false
-gem 'delayed_job_active_record'
-gem 'daemons'
-gem 'ice_cube'
-gem 'rufus-scheduler'
-gem "delayed_job_web"
-gem "chronic"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -65,5 +59,6 @@ gem 'capistrano-ext'
 gem 'rvm-capistrano'
 gem 'hipchat'
 gem 'eventmachine'
+gem 'whenever'
 # To use debugger
 # gem 'debugger'

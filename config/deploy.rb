@@ -1,6 +1,7 @@
 require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
 require "rvm/capistrano"
+require "whenever/capistrano"
 # require 'airbrake/cpaistrano'
 # server "173.230.138.111", :web, :app, :db, :primary => true
 # server '173.230.138.111', :web, :app, :db, primary: true
@@ -21,6 +22,7 @@ set :hipchat_announce, false # notify users?
 
 set :stages, %w(production staging)
 set :default_stage, "production"
+set :whenever_environment, defer { default_stage }
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
