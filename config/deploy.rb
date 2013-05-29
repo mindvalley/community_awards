@@ -13,6 +13,7 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 set :repository,  "git@github.com:mfa213/AwardsV2.git"
+set :SKIP_RAILS_ADMIN_INITIALIZER, false
 
 # set :hipchat_token, "37ce9504f3a34b33626fc10b3c0f4a"
 # set :hipchat_room_name, "198383"
@@ -67,7 +68,7 @@ before "deploy:create_symlink", "assets:precompile"
 namespace :assets do
   desc "Compile assets"
   task :precompile, :roles => :app do
-    run "cd #{release_path} && rake RAILS_ENV=#{rails_env} assets:precompile SKIP_RAILS_ADMIN_INITIALIZER=false"
+    run "cd #{release_path} && rake RAILS_ENV=#{rails_env} assets:precompile"
   end
 end
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
