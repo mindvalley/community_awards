@@ -23,6 +23,8 @@ set :hipchat_announce, false # notify users?
 set :stages, %w(production staging)
 set :default_stage, "production"
 set :whenever_environment, defer { default_stage }
+after 'deploy:create_symlink', 'whenever:update_crontab'
+after 'deploy:rollback', 'whenever:update_crontab'
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
