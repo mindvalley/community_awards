@@ -64,5 +64,6 @@ gem 'capistrano'
 gem 'capistrano-ext'
 gem 'rvm-capistrano'
 gem 'hipchat'
+gem 'eventmachine'
 # To use debugger
 # gem 'debugger'

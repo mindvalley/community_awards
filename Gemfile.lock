@@ -316,6 +316,7 @@ DEPENDENCIES
   daemons
   delayed_job_active_record
   delayed_job_web
+  eventmachine
   execjs
   hipchat
   ice_cube
