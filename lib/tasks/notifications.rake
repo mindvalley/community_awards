@@ -14,9 +14,8 @@ namespace :notifications do
 	end
 	desc "third reminder"
 	task :third => :environment do
-			if Date.today == Date.today.end_of_month.beginning_of_week.advance(days: 4) and Date.today.monday?
-				NotificationMailer.third_reminder(Employee.votable.collect{|e| e.email unless e.votes.present?}.uniq).deliver
-			end
+		if Date.today == Date.today.end_of_month.beginning_of_week.advance(days: 4) and Date.today.monday?
+			NotificationMailer.third_reminder(Employee.votable.collect{|e| e.email unless e.votes.present?}.uniq).deliver
 		end
 	end
 end
