@@ -67,7 +67,7 @@ before "deploy:create_symlink", "assets:precompile"
 namespace :assets do
   desc "Compile assets"
   task :precompile, :roles => :app do
-    run "cd #{release_path} && rake RAILS_ENV=#{rails_env} assets:precompile"
+    run "cd #{release_path} && rake RAILS_ENV=#{rails_env} assets:precompile SKIP_RAILS_ADMIN_INITIALIZER=false"
   end
 end
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
