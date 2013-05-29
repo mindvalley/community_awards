@@ -43,7 +43,7 @@ group :production do
 end
 
 gem 'activerecord-postgres-hstore'
-# gem 'whenever', :require => false
+gem 'whenever', :require => false
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -59,6 +59,5 @@ gem 'capistrano-ext'
 gem 'rvm-capistrano'
 gem 'hipchat'
 gem 'eventmachine'
-gem 'whenever'
 # To use debugger
 # gem 'debugger'
