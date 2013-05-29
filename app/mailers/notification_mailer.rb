@@ -1,6 +1,6 @@
 class NotificationMailer < ActionMailer::Base
   
-  default from: "#{User.admin.first.email}"
+  default from: "justynak@mindvalley.com"
 
   def first_reminder(users)
   	mail(:to => users, :subject => "IMPORTANT - Submit your 'name of the month' 2013 Community Awesomeness Awards")
