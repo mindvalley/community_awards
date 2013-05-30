@@ -1,6 +1,7 @@
 require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
 require "rvm/capistrano"
+require 'whenever/capistrano'
 # require 'airbrake/cpaistrano'
 # server "173.230.138.111", :web, :app, :db, :primary => true
 # server '173.230.138.111', :web, :app, :db, primary: true
@@ -12,7 +13,7 @@ set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
-set :repository,  "git@github.com:mfa213/AwardsV2.git"
+set :repository,  "git@github.com:mindvalley/community_awards.git"
 
 # set :hipchat_token, "37ce9504f3a34b33626fc10b3c0f4a"
 # set :hipchat_room_name, "198383"
