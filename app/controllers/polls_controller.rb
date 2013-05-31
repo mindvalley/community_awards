@@ -1,8 +1,17 @@
 class PollsController < ApplicationController
   def index
     @employees = Employee.votable
+    # binding.pry
+    # unless (@ballot = Ballot.where(voter: current_user, period: current_period).first)
+    #   # binding.pry
+    #   @ballot = Ballot.new
+    #   @employees.each do |employee|
+    #     @ballot.votes.build(candidate: employee.id)
+    #   end
+    # end
+    @employees = Employee.votable
     # @ballot = Ballot.new
-    unless (@ballot = Ballot.where(employee_id: Employee.find_by_email(current_user.email).id, period: current_period).first)
+    unless (@ballot = Ballot.where(employee_id: Employee.find_by_email(current_user.email).try(:id), period: current_period).first)
       @ballot = Ballot.new
       @employees.each do |employee|
         @ballot.votes.build(candidate: employee.id)
