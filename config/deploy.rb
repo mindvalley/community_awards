@@ -1,7 +1,7 @@
 require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
 require "rvm/capistrano"
-require 'whenever/capistrano'
+# require 'whenever/capistrano'
 # require 'airbrake/cpaistrano'
 # server "173.230.138.111", :web, :app, :db, :primary => true
 # server '173.230.138.111', :web, :app, :db, primary: true
