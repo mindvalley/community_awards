@@ -65,7 +65,7 @@ namespace :deploy do
 
   before "deploy", "deploy:check_revision"
 end
-before "deploy:create_symlink", "assets:precompile"
+# before "deploy:create_symlink", "assets:precompile"
 
 # namespace :assets do
 #   desc "Compile assets"
