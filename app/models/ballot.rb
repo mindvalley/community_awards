@@ -1,5 +1,4 @@
 class Ballot < ActiveRecord::Base
-  include IceCube
   attr_accessible :adjustment_factor, :employee_id, :period, :votes_attributes, :voter
 
   belongs_to :voter, :class_name => "Employee", foreign_key: "employee_id"
