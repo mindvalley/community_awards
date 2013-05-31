@@ -1,4 +1,4 @@
-root = "/home/mvdev/apps/AwardsV2/current"
+root = "/home/mvdev/apps/community_awards/current"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
 stderr_path "#{root}/log/unicorn.log"
