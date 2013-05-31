@@ -1,6 +1,7 @@
 require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
 require "rvm/capistrano"
+load 'deploy/assets'
 # require 'whenever/capistrano'
 # require 'airbrake/cpaistrano'
 # server "173.230.138.111", :web, :app, :db, :primary => true
@@ -59,13 +60,6 @@ namespace :deploy do
       puts "WARNING: HEAD is not the same as origin/master"
       puts "Run `git push` to sync changes."
       exit
-    end
-  end
-
-  namespace :assets do
-    desc "Compile assets"
-    task :precompile, :roles => :app do
-      run "cd #{release_path} && rake RAILS_ENV=#{rails_env} assets:precompile"
     end
   end
 
