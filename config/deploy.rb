@@ -61,16 +61,26 @@ namespace :deploy do
       exit
     end
   end
+
+  namespace :assets do
+    desc "Compile assets"
+    task :precompile, :roles => :app do
+      run "cd #{release_path} && rake RAILS_ENV=#{rails_env} assets:precompile"
+    end
+  end
+
   before "deploy", "deploy:check_revision"
 end
 before "deploy:create_symlink", "assets:precompile"
 
-namespace :assets do
-  desc "Compile assets"
-  task :precompile, :roles => :app do
-    run "cd #{release_path} && rake RAILS_ENV=#{rails_env} assets:precompile"
-  end
-end
+# namespace :assets do
+#   desc "Compile assets"
+#   task :precompile, :roles => :app do
+#     run "cd #{release_path} && rake RAILS_ENV=#{rails_env} assets:precompile"
+#   end
+# end
+
+
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 # set :deploy_to, "/home/#{user}/apps/#{application}"
 
