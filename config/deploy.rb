@@ -46,10 +46,6 @@ namespace :deploy do
   
   after "deploy:setup", "deploy:setup_config"
 
-  match 'auth/:provider/callback', to: 'sessions#create'
-  match 'auth/failure', to: redirect('/')
-  # match 'signout', to: 'sessions#destroy', as: 'signout'
-
   task :symlink_config, roles: :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end
