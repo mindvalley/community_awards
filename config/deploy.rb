@@ -10,7 +10,7 @@ require 'whenever/capistrano'
 set :application, "AwardsV2"
 set :user, "mvdev"
 set :deploy_to, "/home/#{user}/apps/#{application}"
-set :deploy_via, "remote_cache"
+set :deploy_via, :remote_cache
 set :use_sudo, false
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 set :repository,  "git@github.com:mindvalley/community_awards.git"
@@ -55,8 +55,8 @@ namespace :deploy do
   desc "Make sure local git is in sync with remote."
   
   task :check_revision, roles: :web do
-    unless `git rev-parse HEAD` == `git rev-parse origin/v2`
-      puts "WARNING: HEAD is not the same as origin/v2"
+    unless `git rev-parse HEAD` == `git rev-parse origin/master`
+      puts "WARNING: HEAD is not the same as origin/master"
       puts "Run `git push` to sync changes."
       exit
     end
