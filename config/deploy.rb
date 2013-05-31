@@ -7,7 +7,7 @@ require 'whenever/capistrano'
 # server '173.230.138.111', :web, :app, :db, primary: true
 # set :port, 20022
 # set :server_name, 'amapp.mvstg.com'
-set :application, "AwardsV2"
+set :application, "community_awards"
 set :user, "mvdev"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
