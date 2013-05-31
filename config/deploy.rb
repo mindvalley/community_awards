@@ -10,7 +10,7 @@ require 'whenever/capistrano'
 set :application, "AwardsV2"
 set :user, "mvdev"
 set :deploy_to, "/home/#{user}/apps/#{application}"
-set :deploy_via, :remote_cache
+set :deploy_via, "remote_cache"
 set :use_sudo, false
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 set :repository,  "git@github.com:mindvalley/community_awards.git"
