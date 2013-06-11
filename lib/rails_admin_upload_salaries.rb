@@ -49,7 +49,7 @@ module RailsAdmin
                   end
                 end
               end
-              Ballot.schedule
+              # Ballot.schedule
             end
             @results = Ballot.compute_results(params[:period])
             if result = Result.where(period: params[:period]).first

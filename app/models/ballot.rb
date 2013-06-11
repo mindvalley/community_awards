@@ -28,15 +28,12 @@ class Ballot < ActiveRecord::Base
   #   system 'bundle exec whenever --update-crontab store'
   # end
 
-  def self.schedule
-    new_schedule = Schedule.new(Time.now)
-    new_schedule.add_recurrence_rule Rule.monthly.day_of_week(
-      :monday => [1],
-      :tuesday => [-1],
-      :friday => [-1]
-    )
-    # new_schedule.add_recurrence_time(Time.now)
-    # new_schedule.add_exception_time(Time.now + 1.day)
-    # new_schedule
-  end
+  # def self.schedule
+  #   new_schedule = Schedule.new(Time.now)
+  #   new_schedule.add_recurrence_rule Rule.monthly.day_of_week(
+  #     :monday => [1],
+  #     :tuesday => [-1],
+  #     :friday => [-1]
+  #   )
+  # end
 end
