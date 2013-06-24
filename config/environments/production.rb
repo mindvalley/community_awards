@@ -65,7 +65,7 @@ AwardsV2::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :openssl_verify_mode => OpenSSL::SSL::VERIFY_NONE,
-    :address => 'awards.mindvalley.net',
+    :address => 'localhost',
     :port => 25,
     :domain => 'awards.mindvalley.net'
     # :authentication => 'plain'
