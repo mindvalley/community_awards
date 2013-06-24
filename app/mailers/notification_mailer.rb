@@ -13,5 +13,8 @@ class NotificationMailer < ActionMailer::Base
   def third_reminder(users)
   	mail(:to => users, :subject => "FINAL REMINDER: IMPORTANT - Submit your 'name of the month' 2012 Community Awesomeness Awards")
   end
+  def test
+    mail(:to => 'furqan@mindvalley.com', :subject => 'test')
+  end
 
 end

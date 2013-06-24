@@ -19,7 +19,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-gem "mailcatcher"
+
 gem 'jquery-rails'
 
 gem 'omniauth-mindvalley', :git => 'git://github.com/mindvalley/omniauth-mindvalley.git'
@@ -34,6 +34,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'rack-mini-profiler'
   gem 'rails_best_practices'
+  gem "mailcatcher"
   gem 'reek'
 end
 
