@@ -63,14 +63,15 @@ AwardsV2::Application.configure do
   config.active_support.deprecation = :notify
 
   config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   :address => 'awards.mindvalley.net',
-  #   :port => 25,
-  #   :domain => 'awards.mindvalley.net',
-  #   :authentication => 'plain'
-  #   # :user_name => 'mvdev',
-  #   # :password => ''
-  # }
+  config.action_mailer.smtp_settings = {
+    :openssl_verify_mode => OpenSSL::SSL::VERIFY_NONE
+    :address => 'awards.mindvalley.net',
+    :port => 25,
+    :domain => 'awards.mindvalley.net'
+    # :authentication => 'plain'
+    # :user_name => 'mvdev',
+    # :password => ''
+  }
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
