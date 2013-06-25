@@ -18,21 +18,21 @@ class ApplicationController < ActionController::Base
   end
 
   def current_period
-    unless Ballot.last
-      prev_month = "#{Date.today.month}"
-    else
-      prev_month = Ballot.last.period.split('-').last
-    end
-    if prev_month == Date.today.month.to_s and Date.today == Date.today.end_of_month.beginning_of_week.next
-      @current_period = get_current_period
-    else
-      if prev_month < Date.today.month.to_s
-        @current_period = get_current_period
-      else
-        @current_period = "#{Date.today.year}-#{prev_month}"
-      end
-    end
-  	# @current_period = "2013-4"
+    # unless Ballot.last
+    #   prev_month = "#{Date.today.month}"
+    # else
+    #   prev_month = Ballot.last.period.split('-').last
+    # end
+    # if prev_month == Date.today.month.to_s and Date.today == Date.today.end_of_month.beginning_of_week.next
+    #   @current_period = "#{Date.today.year}-#{Date.today.month}"
+    # else
+    #   if prev_month < Date.today.month.to_s
+    #     @current_period = get_current_period
+    #   else
+    #     @current_period = "#{Date.today.year}-#{prev_month}"
+    #   end
+    # end
+  	@current_period = "2013-7"
   end
 
   def current_month
