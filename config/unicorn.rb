@@ -1,6 +1,6 @@
 root = "/home/mvdev/apps/value_voting/current"
 working_directory root
-pid "#{root}/tmp/pids/unicorn.pid"
+pid "#{root}/tmp/pids/unicorn1.pid"
 stderr_path "#{root}/log/unicorn.log"
 stdout_path "#{root}/log/unicorn.log"
 
