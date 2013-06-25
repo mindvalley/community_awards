@@ -1,0 +1,47 @@
+<div class="box">
+  <div class="box-title">
+    Upload Employees
+  </div>
+  <div class="box-content nopadding">
+    <%= form_tag({controller: "rails_admin/main", :action => 'upload_employees', :model_name => "#{@abstract_model.to_param}"}, :multipart => true, :class => 'form-horizontal') do %>
+      <div class="control-group">
+        <label class="control-label">Employees CSV</label>
+        <div class="controls">
+          <%= file_field_tag :csv %>
+          <span class="help-inline">.csv (comma separated values) format file with the headers: Status, Team, Nick Name, Full Legal Name, Email, Start Date</span>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            <i class='icon-circle-arrow-up icon-white'></i> Upload
+          </button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-title">
+    Employee List
+  </div>
+  <div class="box-content">
+    <table class="table table-bordered table-striped" id="results">
+      <thead>
+        <th>Nick Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Team</th>
+      </thead>
+      <tbody>
+        <% @abstract_model.all.each do |employee| %>
+          <tr>
+            <td><%#= employee.nick_name %></td>
+            <td><%= employee.email %></td>
+            <td><%= employee.status %></td>
+            <td><%= employee.team %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

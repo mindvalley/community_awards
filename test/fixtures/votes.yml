@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  candidate: MyString
+  points: 1.5
+  ballot_id: 1
+  employee_id: 1
+
+two:
+  candidate: MyString
+  points: 1.5
+  ballot_id: 1
+  employee_id: 1
