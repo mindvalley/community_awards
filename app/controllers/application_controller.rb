@@ -23,7 +23,6 @@ class ApplicationController < ActionController::Base
     else
       prev_month = Ballot.last.period.split('-').last
     end
-    binding.pry
     if prev_month == Date.today.month.to_s and Date.today == Date.today.end_of_month.beginning_of_week.next
       @current_period = get_current_period
     else
