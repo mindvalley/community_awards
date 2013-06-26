@@ -15,6 +15,7 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 set :repository,  "git@github.com:mindvalley/community_awards.git"
+set :branch, fetch(:branch, "master")
 
 # set :hipchat_token, "37ce9504f3a34b33626fc10b3c0f4a"
 # set :hipchat_room_name, "198383"
